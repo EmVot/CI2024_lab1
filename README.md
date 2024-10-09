@@ -40,7 +40,7 @@ Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete whe
 | 5            | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | ?            | ?             |
 | 6            | 100000   | 10000  | 0.3     | ?                       | ?            | ?            | ?             |
 
-The performances of the three algorithms will be evaluated primarly on results obtained by the rrd configuration, which represent a good tradeoff between problem complexity and computaion time
+The performances of the three algorithms will be evaluated primarly on results obtained by the 3rd configuration, which represent a good tradeoff between problem complexity and computaion time
 
 The Hill-Climbing approach to an NP-H problem generally produce very scare results both in terms of computational time and minimization of the cost.
 The same problem approached with a sub-optimal greedy algorithm produce a much better result in 1/10th of the time.
