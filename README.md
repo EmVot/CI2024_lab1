@@ -29,7 +29,7 @@ Experiments and cocnlusions are reported as follow:
 
 # Experiments and conclusions
 
-Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete when working with the last three configurations
+Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete when working with the last two configurations
 
 |Configuration | Elements | Sets   | Density | Greedy Optimal Solution | Approach 1   | Approach 2   | Approach 3    |
 |--------------|----------|--------|---------|-------------------------|--------------|--------------|---------------|
