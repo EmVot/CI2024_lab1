@@ -38,7 +38,7 @@ Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete whe
 | 3            | 10000    | 1000   | 0.2     | 101574.7907             | 158757.5319  | 1710263.6344 | 183182.3254   |
 | 4            | 100000   | 10000  | 0.1     | 1526557.7851            | 2411102.0418 | 50234342.6956| 2415922.1224  |
 | 5            | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | ?            | ?             |
-| 6            | 100000   | 10000  | 0.2     | ?                       | ?            | ?            | ?             |
+| 6            | 100000   | 10000  | 0.3     | ?                       | ?            | ?            | ?             |
 
 The performances of the three algorithms will be evaluated primarly on results obtained by the rrd configuration, which represent a good tradeoff between problem complexity and computaion time
 
