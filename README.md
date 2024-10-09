@@ -44,6 +44,7 @@ The performances of the three algorithms will be evaluated primarly on results o
 
 The Hill-Climbing approach to an NP-H problem generally produce very scare results both in terms of computational time and minimization of the cost.
 The same problem approached with a sub-optimal greedy algorithm produce a much better result in 1/10th of the time.
+Moreover, as the problem grows in size, the RHMC increase its performance effectiveness to the choice of a good starting point, which cannot be picked with a random selection, leading quote always to a sub-optimal solution which is most of hte times scarce.
 Confronting the three RHMC algorithms we can see how their results strongly depend on the initital state of hte system:
 + Approach 1 is theoreticallt the worst one beacouse it randomly adds sets till the set-cover is saturated: this means it probably add more sets than it should, resulting in gerally higher costs
 + Approach 2 effectiveness depends on the fisrst set which is removed from its list: if this set covers a large portion of the universe and it is associated with a low cost, the solution become very inefficient (see configuration 4 vs configuaration 3)
