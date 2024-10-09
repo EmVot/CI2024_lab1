@@ -3,57 +3,68 @@ Laboratory 1 for Computational Intelligence Course
 
 # Overview
 ## Presentation
-In this laboratory the hill-climber approach for boulig a solution for the 'Cover Set' problem is presented.
-Additionally to the original .ipynb file provided, I added an Utlity funcion called:
-'covered_elements'
-which returns the total coverage of the until-built solution.
-## Code implementation
-The solution presented firstly implement a greedy algorithm and a brute-force one to make comparisons with the solutions found by the different approaches of the hill-climbing algorithms implemented.
-Since the brute-force algorithm is unfeasible with all the configuartions apart from the first one, i recomend to use the greedy-one in case you want to repeat the experiments.
-The file contains different approaches to the problem using basically two approaches of the hill-climber structure:
+In this laboratory, the hill-climber approach for building a solution for the 'Set Cover' problem is presented.  
+In addition to the original `.ipynb` file provided, I added a utility function called `covered_elements`,  
+which returns the total coverage of the current solution.
 
-* A bottom-up solution-building: starts from none sets taken and add a random one until it achieve a complete coverage
-* A top-down solution approach: starts with the dumb solution of all the sets taken and eliminates a random one while leaving the solution valid; the process is repeated till we achieve a target 'threshold', which represents the ratio between the considered set-cover and the total number of sets, or the process cannot find another item to take away in a 'time_limit' iterations number.
+## Code Implementation
+The solution first implements a greedy algorithm and a brute-force one to compare with the solutions found by the different approaches of the hill-climbing algorithms implemented.  
+Since the brute-force algorithm is infeasible for all configurations except the first one, I recommend using the greedy algorithm if you want to repeat the experiments.
 
-The former two method implement a very basic implementation with no regards of the costs, which aims to study, for the problem in question, which advantages and disadvantages the two approaches present.
-The latter takes in consideration the 'cost' variable, and make more af an 'aimed' decicision while building the solution (exploitation-driven method)
+The file contains different approaches to the problem using two hill-climbing structures:
+
+* **Bottom-up solution-building**: Starts with no sets taken and adds a random one until it achieves complete coverage.
+* **Top-down solution approach**: Starts with the trivial solution where all sets are taken and removes a random one while ensuring the solution remains valid. The process is repeated until we achieve a target 'threshold' (the ratio between the considered set-cover and the total number of sets) or the process can't find another item to remove within a 'time_limit' of iterations.
+
+These two methods implement a basic approach without considering costs. The goal is to study the advantages and disadvantages of the two strategies for this problem.  
+A final approach takes into consideration the 'cost' variable and makes more informed decisions while building the solution (an exploitation-driven method).
 
 ## Considerations
-While little is to be said about the first two algorithms, I feel some conisderations need to be made regarding the last one;
-First of all with this implementation we explare the 'balance' between explaration and exploitation:
-* The code can handle multiple indexes candidates before doing its choice based on the cost; this somehow implements the idea of 'wideness' of exploration: the higher the cardinality of the array containing the cantidate indexes, the further the algorithm is able to see beyond its local landscape, potentially beign able to find at some point the optimal solution; it's clear anyway that in a context where the jump is made randomically, the more the algorithm is able to jump from one state to another, the more it is unstable, resulting eventually in a search time which equals the brue-force one in terms of worst-case-scenario, as it becomes practically a test on permutations
-* The code which implemnts the a tweak approach, as long as the concept of 'Simulated Annealing', as it can take slightly worse solutions, as long the coverage obtained by the new solution is higher than the previous one
+While little can be said about the first two algorithms, some considerations need to be made regarding the last one:
 
-Experiments and cocnlusions are reported as follow:
+First, this implementation explores the balance between **exploration** and **exploitation**:
 
+* The code handles multiple candidate indices before making a choice based on cost. This implements the idea of 'wideness' in exploration: the higher the cardinality of the array containing the candidate indices, the further the algorithm can see beyond its local landscape, potentially finding the optimal solution. However, it's clear that in a context where jumps are made randomly, the more the algorithm jumps between states, the more unstable it becomes. Eventually, search time could match that of brute-force in the worst-case scenario, as it essentially tests permutations.
+* The code implements a tweak approach, similar to **Simulated Annealing**, where it accepts slightly worse solutions as long as the coverage obtained by the new solution is higher than the previous one.
 
-# Experiments and conclusions
+Experiments and conclusions are reported below:
 
-Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete when working with the last two configurations
+# Experiments and Conclusions
 
-|Configuration | Elements | Sets   | Density | Greedy Optimal Solution | Approach 1   | Approach 2   | Approach 3    |
-|--------------|----------|--------|---------|-------------------------|--------------|--------------|---------------|
-| 1            | 100      | 10     | 0.2     | 254.9091                | 281.8948     | 254.9091     | 254.9091      |
-| 2            | 1000     | 100    | 0.2     | 5702.5028               | 8527.5181    | 14023.5398   | 10326.0617    |
-| 3            | 10000    | 1000   | 0.2     | 101574.7907             | 158757.5319  | 1710263.6344 | 183182.3254   |
-| 4            | 100000   | 10000  | 0.1     | 1526557.7851            | 2411102.0418 | 50234342.6956| 2415922.1224  |
-| 5            | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | 2484641.2155 | 2585180.2155  |
+## Experiment Results
+Note: The running time of Approaches 2 & 3 takes more than 1:50 hours to complete for the last two configurations.
 
-The performances of the three algorithms will be evaluated primarly on results obtained by the 3rd configuration, which represent a good tradeoff between problem complexity and computaion time
+| Configuration | Elements | Sets   | Density | Greedy Optimal Solution | Approach 1   | Approach 2   | Approach 3    |
+|---------------|----------|--------|---------|-------------------------|--------------|--------------|---------------|
+| 1             | 100      | 10     | 0.2     | 254.9091                | 281.8948     | 254.9091     | 254.9091      |
+| 2             | 1000     | 100    | 0.2     | 5702.5028               | 8527.5181    | 14023.5398   | 10326.0617    |
+| 3             | 10000    | 1000   | 0.2     | 101574.7907             | 158757.5319  | 1710263.6344 | 183182.3254   |
+| 4             | 100000   | 10000  | 0.1     | 1526557.7851            | 2411102.0418 | 50234342.6956| 2415922.1224  |
+| 5             | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | 4484641.2155 | 2585180.2155  |
+| 6             | 100000   | 10000  | 0.3     | 1756195.7223            | 2522800.3354 | /            | 413672179.8582  |
 
-The Hill-Climbing approach to an NP-H problem generally produce very scare results both in terms of computational time and minimization of the cost.
-The same problem approached with a sub-optimal greedy algorithm produce a much better result in 1/10th of the time.
-Moreover, as the problem grows in size, the RHMC increase its performance effectiveness to the choice of a good starting point, which cannot be picked with a random selection, leading quote always to a sub-optimal solution which is most of hte times scarce.
-Confronting the three RHMC algorithms we can see how their results strongly depend on the initital state of hte system:
-+ Approach 1 is theoreticallt the worst one beacouse it randomly adds sets till the set-cover is saturated: this means it probably add more sets than it should, resulting in gerally higher costs
-+ Approach 2 effectiveness depends on the fisrst set which is removed from its list: if this set covers a large portion of the universe and it is associated with a low cost, the solution become very inefficient (see configuration 4 vs configuaration 3)
-+ Approach 3 is the one which performs its decisions in the most ocultaed way, but its effectiveness strongly depends on the initial state, as we can see it produce results that are better worse, or quite on par w.r.t. the other two approaches
+## Conclusions
+The performance of the three algorithms was primarily evaluated based on results obtained from the third configuration, which represents a good tradeoff between problem complexity and computation time.
 
-To better study the behavoiur of the three RHMC algorithms we take in consideration the fitness curve w.r.t. configuration 3
-Looking at the results shown in the notebook we can see that:
-+ Approach 1 gets reaches saturation in the last steps
-+ Approach 2 does not saturate with the constraints given, suggesting that
-+ + A more efficient contraint on the stop condition exists
-  + We could implement self-evoltuion strategies for the learning rate (not the focus of this laboratory)
-+ Approach 3 reaches very fast the solution (very few points plotted) and does not saturate like approach 1, which means it can handle like approach 2 self-evolution algorithm strategies
- 
+The hill-climbing approach to an NP-hard problem generally produces poor results in both computational time and cost minimization. The same problem approached with a sub-optimal greedy algorithm produced much better results in 1/10th of the time.
+
+Moreover, as the problem grows in size, the performance of hill-climbing increasingly depends on selecting a good starting point. A random selection almost always leads to suboptimal results, which are often poor.
+
+### Comparing the Three Hill-Climbing Algorithms:
+
+- **Approach 1** is theoretically the worst because it randomly adds sets until the set-cover is saturated. This means it likely adds more sets than necessary, resulting in higher costs. However, it has the lowest computational load, making it the preferred approach for high-dimensionality configurations.
+  
+- **Approach 2**’s effectiveness depends on the first set removed from the solution. If this set covers a large portion of the universe at a low cost, the solution becomes very inefficient (e.g., configuration 4 vs. configuration 3). Additionally, the program becomes infeasible for high-dimensionality problems because identifying which sets to exclude is hard with random selection.
+
+- **Approach 3** makes its decisions in the most methodical way, but its effectiveness strongly depends on the initial state. As we see, its results can be better, worse, or on par with the other approaches. Like the other two approaches, it becomes infeasible for high-dimensionality problems due to its Big-O complexity.
+
+To better study the behavior of the three hill-climbing algorithms, we consider the fitness curve for configuration 3. Looking at the results shown in the notebook:
+
+- Approach 1 reaches saturation in the final steps.
+- Approach 2 does not saturate with the given constraints, suggesting that:
+  - A more efficient constraint on the stopping condition exists.
+  - We could implement self-evolution strategies for the learning rate (though this is not the focus of this lab).
+- Approach 3 reaches a good cost value in the early steps, but struggles to find a valid solution for high-dimensionality problems. This may be because once a good cost is reached, it becomes difficult to find another configuration that improves the solution. This problem could be addressed by introducing evolution strategies.
+
+### Final Remarks:
+The first approach yielded the best results across the board, outperforming even the approach theoretically expected to produce the best results (Approach 3). This was despite the lack of cost consideration, annealing strategies, and multiple mutation strategies in Approach 1. This may be due to the nature of the problem and the fact that introducing such strategies without more sophisticated parameter management may only worsen results. This leads to preferring a simpler approach over a more complex one when dealing with random mutations for an NP-hard problem.
