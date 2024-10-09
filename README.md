@@ -37,8 +37,7 @@ Note: I running time of Approcheches 2 & 3 take more than 1 hour to complete whe
 | 2            | 1000     | 100    | 0.2     | 5702.5028               | 8527.5181    | 14023.5398   | 10326.0617    |
 | 3            | 10000    | 1000   | 0.2     | 101574.7907             | 158757.5319  | 1710263.6344 | 183182.3254   |
 | 4            | 100000   | 10000  | 0.1     | 1526557.7851            | 2411102.0418 | 50234342.6956| 2415922.1224  |
-| 5            | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | ?            | ?             |
-| 6            | 100000   | 10000  | 0.3     | ?                       | ?            | ?            | ?             |
+| 5            | 100000   | 10000  | 0.2     | 1719097.0827            | 2585915.2155 | 2484641.2155 | 2585180.2155  |
 
 The performances of the three algorithms will be evaluated primarly on results obtained by the 3rd configuration, which represent a good tradeoff between problem complexity and computaion time
 
@@ -51,3 +50,10 @@ Confronting the three RHMC algorithms we can see how their results strongly depe
 + Approach 3 is the one which performs its decisions in the most ocultaed way, but its effectiveness strongly depends on the initial state, as we can see it produce results that are better worse, or quite on par w.r.t. the other two approaches
 
 To better study the behavoiur of the three RHMC algorithms we take in consideration the fitness curve w.r.t. configuration 3
+Looking at the results shown in the notebook we can see that:
++ Approach 1 gets reaches saturation in the last steps
++ Approach 2 does not saturate with the constraints given, suggesting that
++ + A more efficient contraint on the stop condition exists
+  + We could implement self-evoltuion strategies for the learning rate (not the focus of this laboratory)
++ Approach 3 reaches very fast the solution (very few points plotted) and does not saturate like approach 1, which means it can handle like approach 2 self-evolution algorithm strategies
+ 
